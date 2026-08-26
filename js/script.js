@@ -28,6 +28,9 @@ var roleProfiles = {
 };
 
 function getActiveRole() {
+  var urlParams = new URLSearchParams(window.location.search);
+  var paramRole = urlParams.get("role");
+  if (paramRole) return paramRole;
   return localStorage.getItem("campus_role") || "student";
 }
 
