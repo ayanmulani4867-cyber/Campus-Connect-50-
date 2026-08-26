@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Campus Connect</title>
+  <link rel="stylesheet" href="css/style.css?v=50">
+</head>
+<body>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="brand-wrap">
+      <a href="index.html" class="logo">
+        <span>🎓</span>
+        <span>Campus Connect</span>
+      </a>
+    </div>
+    <div class="topbar-actions">
+      <a href="login.html" class="btn btn-outline btn-sm">Sign In</a>
+    </div>
+  </header>
+
+  <!-- Registration Form Section -->
+  <section class="form-section">
+    <div class="form-box" style="max-width: 480px;">
+      <div class="form-header">
+        <h2>Create Account</h2>
+        <p>Register as a student or faculty member</p>
+      </div>
+
+      <form id="registerForm">
+        <div class="form-group">
+          <label for="regRole">Select Role</label>
+          <select id="regRole" class="form-select">
+            <option value="student">Student</option>
+            <option value="faculty">Faculty Member</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="regName">Full Name</label>
+          <input type="text" id="regName" class="form-input" placeholder="e.g. Rahul Sharma">
+        </div>
+
+        <div class="form-group">
+          <label for="regEmail">College Email</label>
+          <input type="email" id="regEmail" class="form-input" placeholder="e.g. name@campus.edu">
+        </div>
+
+        <div class="form-group" id="deptGroup">
+          <label for="regDept">Department</label>
+          <select id="regDept" class="form-select">
+            <option value="">Select Department</option>
+            <option value="Computer Science">Computer Science & Engineering</option>
+            <option value="Electronics">Electronics & Communication</option>
+            <option value="Mechanical">Mechanical Engineering</option>
+            <option value="Civil">Civil Engineering</option>
+            <option value="Electrical">Electrical & Electronics</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="yearGroup">
+          <label for="regYear">Academic Year</label>
+          <select id="regYear" class="form-select">
+            <option value="">Select Year</option>
+            <option value="1st Year">1st Year (Semester 1 & 2)</option>
+            <option value="2nd Year">2nd Year (Semester 3 & 4)</option>
+            <option value="3rd Year">3rd Year (Semester 5 & 6)</option>
+            <option value="4th Year">4th Year (Semester 7 & 8)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="regPassword">Password</label>
+          <div class="password-box">
+            <input type="password" id="regPassword" class="form-input" placeholder="Minimum 6 characters">
+            <span class="toggle-pass" data-target="regPassword">Show</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="regConfirmPassword">Confirm Password</label>
+          <div class="password-box">
+            <input type="password" id="regConfirmPassword" class="form-input" placeholder="Re-enter password">
+            <span class="toggle-pass" data-target="regConfirmPassword">Show</span>
+          </div>
+        </div>
+
+        <p class="error-msg" id="regError"></p>
+        <p class="success-msg" id="regSuccess"></p>
+
+        <button type="submit" class="btn btn-filled full-width">Register Account</button>
+      </form>
+
+      <p class="link-text">Already registered? <a href="login.html">Sign in here</a></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Campus Connect</p>
+  </footer>
+
+  <script src="js/script.js?v=50"></script>
+</body>
+</html>

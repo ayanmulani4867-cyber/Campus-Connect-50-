@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Directory - Campus Connect</title>
+  <link rel="stylesheet" href="css/style.css?v=50">
+</head>
+<body>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="brand-wrap">
+      <span class="menu-btn" id="menuBtn">&#9776;</span>
+      <a href="dashboard.html" class="logo">
+        <span>🎓</span>
+        <span>Campus Connect</span>
+      </a>
+    </div>
+
+    <div class="topbar-actions">
+      <div class="role-switch-box">
+        <span>Role:</span>
+        <select id="globalRoleSelect">
+          <option value="admin">Admin</option>
+          <option value="faculty">Faculty</option>
+          <option value="student">Student</option>
+        </select>
+      </div>
+
+      <a href="profile.html" class="user-chip">
+        <div class="user-avatar-mini" id="topbarAvatar">A</div>
+        <span id="topbarUserName">Admin Controller</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="dashboard-wrap">
+    
+    <!-- Mobile Drawer Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-heading">Navigation</div>
+      <nav class="sidebar-nav" id="sidebarNav"></nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="page-header">
+        <div>
+          <h2>Campus User Directory (Admin Management)</h2>
+          <p>Centralized database of registered students, faculty members and staff</p>
+        </div>
+        <div class="page-actions">
+          <button class="btn btn-primary btn-sm" onclick="openModal('addUserModal')">+ Add Member</button>
+        </div>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="card-grid" style="margin-bottom: 24px;">
+        <div class="stat-card stat-green">
+          <div class="stat-card-header"><span class="stat-card-title">Enrolled Students</span><span class="stat-card-icon">🎓</span></div>
+          <div class="stat-card-value">1,250</div>
+          <div class="stat-card-desc">Undergraduate & Postgrad</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card-header"><span class="stat-card-title">Teaching Faculty</span><span class="stat-card-icon">👨‍🏫</span></div>
+          <div class="stat-card-value">85</div>
+          <div class="stat-card-desc">Permanent & Visiting</div>
+        </div>
+
+        <div class="stat-card stat-amber">
+          <div class="stat-card-header"><span class="stat-card-title">Engineering Depts</span><span class="stat-card-icon">🏛️</span></div>
+          <div class="stat-card-value">6</div>
+          <div class="stat-card-desc">CSE, ECE, ME, CE, EEE, IT</div>
+        </div>
+
+        <div class="stat-card stat-purple">
+          <div class="stat-card-header"><span class="stat-card-title">Directory Health</span><span class="stat-card-icon">⚡</span></div>
+          <div class="stat-card-value">100%</div>
+          <div class="stat-card-desc">All records synced</div>
+        </div>
+      </div>
+
+      <!-- Search & Filters -->
+      <div class="filter-bar">
+        <div class="search-input-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="globalSearchInput" placeholder="Search by name, ID or department...">
+        </div>
+        <button class="btn btn-primary btn-sm filter-btn active" data-filter="all">All Members</button>
+        <button class="btn btn-secondary btn-sm filter-btn" data-filter="student">Students Only</button>
+        <button class="btn btn-secondary btn-sm filter-btn" data-filter="faculty">Faculty Only</button>
+      </div>
+
+      <!-- User Directory Table -->
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Member ID</th>
+              <th>Full Name</th>
+              <th>Role</th>
+              <th>Department</th>
+              <th>Year / Designation</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="filterable-item" data-category="student">
+              <td><strong>STU2024001</strong></td>
+              <td>Rahul Sharma</td>
+              <td><span class="badge badge-primary">Student</span></td>
+              <td>Computer Science</td>
+              <td>3rd Year (Sem 6)</td>
+              <td><span class="badge badge-success">Active</span></td>
+              <td><button class="btn btn-secondary btn-sm" onclick="alert('Viewing record for Rahul Sharma')">View</button></td>
+            </tr>
+
+            <tr class="filterable-item" data-category="faculty">
+              <td><strong>FAC2018042</strong></td>
+              <td>Dr. Anita Sen</td>
+              <td><span class="badge badge-success">Faculty</span></td>
+              <td>Computer Science</td>
+              <td>Associate Professor</td>
+              <td><span class="badge badge-success">Active</span></td>
+              <td><button class="btn btn-secondary btn-sm" onclick="alert('Viewing record for Dr. Anita Sen')">View</button></td>
+            </tr>
+
+            <tr class="filterable-item" data-category="student">
+              <td><strong>STU2024002</strong></td>
+              <td>Priya Patel</td>
+              <td><span class="badge badge-primary">Student</span></td>
+              <td>Computer Science</td>
+              <td>3rd Year (Sem 6)</td>
+              <td><span class="badge badge-success">Active</span></td>
+              <td><button class="btn btn-secondary btn-sm" onclick="alert('Viewing record for Priya Patel')">View</button></td>
+            </tr>
+
+            <tr class="filterable-item" data-category="faculty">
+              <td><strong>FAC2019018</strong></td>
+              <td>Prof. Rajesh Verma</td>
+              <td><span class="badge badge-success">Faculty</span></td>
+              <td>Computer Science</td>
+              <td>Assistant Professor</td>
+              <td><span class="badge badge-success">Active</span></td>
+              <td><button class="btn btn-secondary btn-sm" onclick="alert('Viewing record for Prof. Rajesh Verma')">View</button></td>
+            </tr>
+
+            <tr class="filterable-item" data-category="student">
+              <td><strong>STU2023089</strong></td>
+              <td>Aman Verma</td>
+              <td><span class="badge badge-primary">Student</span></td>
+              <td>Electronics</td>
+              <td>2nd Year (Sem 4)</td>
+              <td><span class="badge badge-success">Active</span></td>
+              <td><button class="btn btn-secondary btn-sm" onclick="alert('Viewing record for Aman Verma')">View</button></td>
+            </tr>
+
+            <tr class="filterable-item" data-category="student">
+              <td><strong>STU2022014</strong></td>
+              <td>Sneha Roy</td>
+              <td><span class="badge badge-primary">Student</span></td>
+              <td>Mechanical</td>
+              <td>4th Year (Sem 8)</td>
+              <td><span class="badge badge-success">Active</span></td>
+              <td><button class="btn btn-secondary btn-sm" onclick="alert('Viewing record for Sneha Roy')">View</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Add Member Modal -->
+  <div class="modal-overlay" id="addUserModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Enroll New Campus Member</h3>
+        <span class="modal-close" onclick="closeModal('addUserModal')">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Member Type</label>
+          <select class="form-select">
+            <option>Student</option>
+            <option>Faculty Member</option>
+            <option>Staff Member</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" class="form-input" placeholder="e.g. Ankit Gupta">
+        </div>
+        <div class="form-group">
+          <label>Department</label>
+          <select class="form-select">
+            <option>Computer Science & Engineering</option>
+            <option>Electronics & Communication</option>
+            <option>Mechanical Engineering</option>
+            <option>Civil Engineering</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>College Email</label>
+          <input type="email" class="form-input" placeholder="e.g. ankit@campus.edu">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary btn-sm" onclick="closeModal('addUserModal')">Cancel</button>
+        <button class="btn btn-primary btn-sm" onclick="alert('Member added to directory successfully (Demo)!'); closeModal('addUserModal');">Enroll Member</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Campus Connect</p>
+  </footer>
+
+  <script src="js/script.js?v=50"></script>
+</body>
+</html>
