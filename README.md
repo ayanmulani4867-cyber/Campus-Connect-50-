@@ -69,23 +69,4 @@ Here are actual screenshots taken from the running project:
 ### 6. Academic Results & Grade Card
 ![Academic Results](screenshots/06-campus-connect-feature.png)
 
----
-
-## 🚀 How to Run Locally
-
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/ayanmulani4867-cyber/Campus-Connect-50-.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd Campus-Connect-50-
-   ```
-3. Open `index.html` directly in any web browser (Chrome, Edge, Firefox), or use a lightweight local server like VS Code Live Server / Python HTTP server:
-   ```bash
-   # Optional: run with Python
-   python -m http.server 3000
-   ```
-4. Sign in using the demo buttons on the login screen to explore the different role views.
-
----
+-
