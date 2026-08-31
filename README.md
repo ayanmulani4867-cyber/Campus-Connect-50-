@@ -98,11 +98,3 @@ Here are actual screenshots taken from the running project:
 4. Sign in using the demo buttons on the login screen to explore the different role views.
 
 ---
-
-## 📝 Roadmap for Future Milestones
-
-- [ ] Connect with a backend server (Node.js / Express or Python backend)
-- [ ] Database integration (MongoDB or PostgreSQL) for persistent user accounts and records
-- [ ] Secure JWT authentication and password hashing
-- [ ] Real file uploads for study material PDFs
-- [ ] Real-time push notifications for new circulars and announcements
