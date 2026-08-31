@@ -1,0 +1,6 @@
+node_modules/
+package-lock.json
+package.json
+server.js
+capture_linkedin_screenshots.js
+capture_screenshots.js

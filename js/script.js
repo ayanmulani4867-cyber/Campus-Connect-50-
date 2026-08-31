@@ -1,7 +1,7 @@
 // Mock data for 3 roles
 var roleProfiles = {
   student: {
-    name: "Rahul Sharma",
+    name: "Ayan Mulani",
     id: "STU2024001",
     email: "rahul@campus.edu",
     dept: "Computer Science",
@@ -10,7 +10,7 @@ var roleProfiles = {
     roleLabel: "Student"
   },
   faculty: {
-    name: "Dr. Anita Sen",
+    name: "P B Patil",
     id: "FAC2018042",
     email: "anita.sen@campus.edu",
     dept: "Computer Science",
