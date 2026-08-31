@@ -44,15 +44,6 @@ Here are the modules and features implemented in this 50% milestone:
 
 ---
 
-## ⚡ Demo Login Credentials
-
-You can test all three roles directly on the login page using the quick 1-click pre-fill buttons or the following credentials:
-
-| Role | Email / ID | Password |
-| :--- | :--- | :--- |
-| **Student** | `rahul@campus.edu` | `123456` |
-| **Faculty** | `anita.sen@campus.edu` | `123456` |
-| **Admin** | `admin@campus.edu` | `123456` |
 
 ---
 
