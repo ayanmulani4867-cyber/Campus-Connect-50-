@@ -90,7 +90,17 @@ document.addEventListener("DOMContentLoaded", function () {
   var topbarAvatar = document.getElementById("topbarAvatar");
   if (topbarAvatar) topbarAvatar.textContent = user.name.charAt(0);
 
-  // Topbar role indicator badge
+  // Global Role Switcher dropdown in topbar (Preserved & Fully Functional)
+  var roleSelect = document.getElementById("globalRoleSelect");
+  if (roleSelect) {
+    roleSelect.value = role;
+    roleSelect.addEventListener("change", function () {
+      setActiveRole(this.value);
+      window.location.reload();
+    });
+  }
+
+  // Topbar role indicator badge (if present)
   var topbarRoleBadge = document.getElementById("topbarRoleBadge");
   if (topbarRoleBadge) {
     topbarRoleBadge.textContent = user.roleLabel || role.toUpperCase();
@@ -505,7 +515,7 @@ function initMaterials(role) {
   }
 }
 
-// User Directory RBAC: restrict to admin
+// User Directory RBAC & API data loader: restrict to admin & fetch backend records
 function initUsers(role) {
   var addBtn = document.getElementById("addUserBtn");
   var modal = document.getElementById("addUserModal");
@@ -513,7 +523,69 @@ function initUsers(role) {
   if (role !== "admin") {
     if (addBtn) addBtn.remove();
     if (modal) modal.remove();
+    return;
   }
+
+  // Load from secure backend APIs if available
+  fetchUsersFromAPI(role);
+}
+
+// Secure API fetch for Students and Faculty records
+function fetchUsersFromAPI(role) {
+  var tbody = document.querySelector("#usersTableBody, .data-table tbody");
+  if (!tbody) return;
+
+  // Fetch both students and faculty records from secure API
+  Promise.all([
+    fetch('/api/students', { headers: { 'x-role': role } }).then(function (res) {
+      if (res.status === 403) throw new Error("Unauthorized to access student records");
+      return res.json();
+    }),
+    fetch('/api/faculty', { headers: { 'x-role': role } }).then(function (res) {
+      if (res.status === 403) throw new Error("Unauthorized to access faculty records");
+      return res.json();
+    })
+  ])
+  .then(function (results) {
+    var students = (results[0] && results[0].data) ? results[0].data : [];
+    var faculty = (results[1] && results[1].data) ? results[1].data : [];
+
+    var html = "";
+
+    students.forEach(function (s) {
+      html += '<tr class="filterable-item" data-category="student">' +
+        '<td><strong>' + s.id + '</strong></td>' +
+        '<td>' + s.name + '</td>' +
+        '<td><span class="badge badge-primary">Student</span></td>' +
+        '<td>' + s.dept + '</td>' +
+        '<td>' + s.year + '</td>' +
+        '<td><span class="badge badge-success">' + s.status + '</span></td>' +
+        '<td><button class="btn btn-secondary btn-sm" onclick="alert(\'Viewing record for ' + s.name + '\')">View</button></td>' +
+        '</tr>';
+    });
+
+    faculty.forEach(function (f) {
+      html += '<tr class="filterable-item" data-category="faculty">' +
+        '<td><strong>' + f.id + '</strong></td>' +
+        '<td>' + f.name + '</td>' +
+        '<td><span class="badge badge-success">Faculty</span></td>' +
+        '<td>' + f.dept + '</td>' +
+        '<td>' + f.designation + '</td>' +
+        '<td><span class="badge badge-success">' + f.status + '</span></td>' +
+        '<td><button class="btn btn-secondary btn-sm" onclick="alert(\'Viewing record for ' + f.name + '\')">View</button></td>' +
+        '</tr>';
+    });
+
+    if (students.length === 0 && faculty.length === 0) {
+      html = '<tr class="empty-state-row"><td colspan="7" style="text-align: center; padding: 24px; color: var(--text-muted);">No campus directory records available.</td></tr>';
+    }
+
+    tbody.innerHTML = html;
+  })
+  .catch(function (err) {
+    // Fallback to static table if API fetch fails or server is static
+    console.log("Using local table records:", err.message);
+  });
 }
 
 // Admin toggle publish status
