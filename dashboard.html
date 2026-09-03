@@ -19,19 +19,13 @@
     </div>
 
     <div class="topbar-actions">
-      <!-- Role Switcher for Viva Demo -->
-      <div class="role-switch-box">
-        <span>Role:</span>
-        <select id="globalRoleSelect">
-          <option value="student">Student</option>
-          <option value="faculty">Faculty</option>
-          <option value="admin">Admin</option>
-        </select>
+      <div class="role-badge-box">
+        <span class="badge badge-primary" id="topbarRoleBadge">Student</span>
       </div>
 
       <a href="profile.html" class="user-chip">
         <div class="user-avatar-mini" id="topbarAvatar">A</div>
-        <span id="topbarUserName">Ayan Mulani</span>
+        <span id="topbarUserName">John Snow</span>
       </a>
     </div>
   </header>
@@ -155,9 +149,8 @@
         <div class="card-header-row">
           <h3>⚡ Quick Links</h3>
         </div>
-        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <div id="dashboardQuickLinks" style="display: flex; gap: 10px; flex-wrap: wrap;">
           <a href="courses.html" class="btn btn-secondary btn-sm">📚 View Courses</a>
-          <a href="attendance.html" class="btn btn-secondary btn-sm">📅 Attendance</a>
           <a href="materials.html" class="btn btn-secondary btn-sm">📁 Study Notes</a>
           <a href="notices.html" class="btn btn-secondary btn-sm">📢 Notice Board</a>
           <a href="settings.html" class="btn btn-secondary btn-sm">⚙️ Settings</a>

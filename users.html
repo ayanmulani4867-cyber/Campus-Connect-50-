@@ -19,13 +19,8 @@
     </div>
 
     <div class="topbar-actions">
-      <div class="role-switch-box">
-        <span>Role:</span>
-        <select id="globalRoleSelect">
-          <option value="admin">Admin</option>
-          <option value="faculty">Faculty</option>
-          <option value="student">Student</option>
-        </select>
+      <div class="role-badge-box">
+        <span class="badge badge-warning" id="topbarRoleBadge">Administrator</span>
       </div>
 
       <a href="profile.html" class="user-chip">
@@ -53,8 +48,8 @@
           <h2>Campus User Directory (Admin Management)</h2>
           <p>Centralized database of registered students, faculty members and staff</p>
         </div>
-        <div class="page-actions">
-          <button class="btn btn-primary btn-sm" onclick="openModal('addUserModal')">+ Add Member</button>
+        <div class="page-actions" id="usersPageActions">
+          <button class="btn btn-primary btn-sm" id="addUserBtn" onclick="openModal('addUserModal')">+ Add Member</button>
         </div>
       </div>
 
@@ -113,12 +108,12 @@
           <tbody>
             <tr class="filterable-item" data-category="student">
               <td><strong>STU2024001</strong></td>
-              <td>Ayan Mulani</td>
+              <td>John Snow</td>
               <td><span class="badge badge-primary">Student</span></td>
               <td>Computer Science</td>
               <td>3rd Year (Sem 6)</td>
               <td><span class="badge badge-success">Active</span></td>
-              <td><button class="btn btn-secondary btn-sm" onclick="alert('Viewing record for Ayan Mulani')">View</button></td>
+              <td><button class="btn btn-secondary btn-sm" onclick="alert('Viewing record for John Snow')">View</button></td>
             </tr>
 
             <tr class="filterable-item" data-category="faculty">

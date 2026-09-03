@@ -57,7 +57,7 @@ Here are actual screenshots taken from the running project:
 ### 2. Student Dashboard
 ![Student Dashboard](screenshots/02-dashboard.png)
 
-### 3. Student Profile (Ayan Mulani)
+### 3. Student Profile (John Snow)
 ![Student Profile](screenshots/03-student-ayan-mulani.png)
 
 ### 4. Faculty Profile (P B Patil)

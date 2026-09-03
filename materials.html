@@ -19,18 +19,13 @@
     </div>
 
     <div class="topbar-actions">
-      <div class="role-switch-box">
-        <span>Role:</span>
-        <select id="globalRoleSelect">
-          <option value="student">Student</option>
-          <option value="faculty">Faculty</option>
-          <option value="admin">Admin</option>
-        </select>
+      <div class="role-badge-box">
+        <span class="badge badge-primary" id="topbarRoleBadge">Student</span>
       </div>
 
       <a href="profile.html" class="user-chip">
         <div class="user-avatar-mini" id="topbarAvatar">A</div>
-        <span id="topbarUserName">Ayan Mulani</span>
+        <span id="topbarUserName">John Snow</span>
       </a>
     </div>
   </header>
@@ -53,8 +48,8 @@
           <h2>Study Materials & Notes Repository</h2>
           <p>Access lecture slides, lab manuals, question banks and syllabus documents</p>
         </div>
-        <div class="page-actions">
-          <button class="btn btn-primary btn-sm" onclick="openModal('uploadMaterialModal')">📤 Upload Material</button>
+        <div class="page-actions" id="materialsPageActions">
+          <button class="btn btn-primary btn-sm" id="uploadMaterialBtn" onclick="openModal('uploadMaterialModal')">📤 Upload Material</button>
         </div>
       </div>
 

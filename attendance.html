@@ -19,18 +19,13 @@
     </div>
 
     <div class="topbar-actions">
-      <div class="role-switch-box">
-        <span>Role:</span>
-        <select id="globalRoleSelect">
-          <option value="student">Student</option>
-          <option value="faculty">Faculty</option>
-          <option value="admin">Admin</option>
-        </select>
+      <div class="role-badge-box">
+        <span class="badge badge-primary" id="topbarRoleBadge">Student</span>
       </div>
 
       <a href="profile.html" class="user-chip">
         <div class="user-avatar-mini" id="topbarAvatar">A</div>
-        <span id="topbarUserName">Ayan Mulani</span>
+        <span id="topbarUserName">John Snow</span>
       </a>
     </div>
   </header>
@@ -158,13 +153,13 @@
       </div>
 
       <!-- Interactive Faculty Roll-Call Demo Section -->
-      <div class="card">
+      <div class="card" id="facultyRollCallCard">
         <div class="card-header-row">
           <div>
             <h3>Interactive Classroom Roll-Call (Faculty Marking Demo)</h3>
             <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Click buttons to toggle between Present, Absent, and Late states</p>
           </div>
-          <button class="btn btn-primary btn-sm" onclick="alert('Attendance saved successfully for CS601!')">Save Attendance</button>
+          <button class="btn btn-primary btn-sm" id="saveAttendanceBtn" onclick="saveFacultyAttendance()">Save Attendance</button>
         </div>
 
         <div class="table-container">
@@ -181,7 +176,7 @@
             <tbody>
               <tr>
                 <td><strong>CSE-2024-001</strong></td>
-                <td>Ayan Mulani</td>
+                <td>John Snow</td>
                 <td>Computer Science</td>
                 <td>6th Sem</td>
                 <td><button type="button" class="btn btn-sm btn-success attend-toggle">Present</button></td>
